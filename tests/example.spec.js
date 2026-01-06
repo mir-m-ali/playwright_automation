@@ -29,11 +29,11 @@ test('Alert with ok', async ({ page }) => {
   let localHtml = 'file:///' + __filename.replace('example.spec.js', 'test.html').replace(/\\/g, '/');
   console.log(localHtml);
   await page.goto(localHtml);  
-  page.on('dialog', async (dialog) => {
-    console.log('Alert text: ' + dialog.message());    
+  page.on('dialog', async (dialog) => {    
+    console.log('Alert text: ' + dialog.message());            
     await dialog.accept();    
   });
 
-  await page.click('#alert-btn');
+  await page.click('#alert-btn');  
   
 });
