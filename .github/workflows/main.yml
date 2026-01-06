@@ -4,7 +4,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  say-hello-inline-bash:
-    runs-on: ubuntu-24.04
+  execute-script:
+    runs-on: ubuntu-latest
     steps:
-      - run: echo "My First Github Action!"
+      # Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v5
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24.x"
+          cache: "npm"
+
+      # Run the script
+      - name: Run github-action.js
+        run: node github-action.js
