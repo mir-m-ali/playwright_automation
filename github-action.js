@@ -1,5 +1,6 @@
 console.log("Running GitHub Action script...");
 let commitMessage = process.argv[2];
+console.log(`arguments passed to script: ${process.argv.length}`);
 if (commitMessage !== undefined) {
   console.log(commitMessage);
   let index = commitMessage.indexOf(":");
