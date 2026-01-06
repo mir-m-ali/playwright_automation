@@ -20,4 +20,4 @@ jobs:
 
       # Run the script
       - name: Run github-action.js
-        run: node github-action.js
+        run: node github-action.js "${{ github.event.head_commit.message }}"
