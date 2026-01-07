@@ -1,0 +1,10 @@
+name: Simple Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-google:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -s -o /dev/null -w "%{http_code}\n" https://www.google.com
