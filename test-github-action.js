@@ -52,5 +52,24 @@ async function getJiraTicketDetails(jiraId) {
   console.log(data);
 }
 
-getJiraTicketDetails("PAP-3");
+async function readGoogle() {
+  const response = await fetch(
+    "https://www.googleapis.com/books/v1/volumes?q=isbn:0747532699",
+    {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  );
+  if (!response.ok) {
+    console.error(`Error---> ${response.statusText}`);
+  }
+
+  const data = await response.json();
+  console.log(data);
+}
+
+//getJiraTicketDetails("PAP-3");
 //runGitHubAction();
+readGoogle();
