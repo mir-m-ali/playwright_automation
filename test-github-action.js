@@ -5,23 +5,23 @@ const API_TOKEN =
 const AUTH = Buffer.from(`${EMAIL}:${API_TOKEN}`).toString("base64");
 const DOMAIN = `mirmali.atlassian.net`;
 
+const BASE_URL = `https://${DOMAIN}/rest/api/3/issue/`;
+
 async function updateJiraField(jiraId, message) {
   const bodyData = {
     fields: { customfield_10088: new Date().toISOString() + ": " + message },
   };
+  const url = `https://${DOMAIN}/rest/api/3/issue/${jiraId}`;
   try {
-    const response = await fetch(
-      `https://${DOMAIN}/rest/api/3/issue/${jiraId}`,
-      {
-        method: "PUT",
-        headers: {
-          Authorization: `Basic ${AUTH}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(bodyData),
-      }
-    );
+    const response = await fetch(url, {
+      method: "PUT",
+      headers: {
+        Authorization: `Basic ${AUTH}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bodyData),
+    });
 
     if (response.status === 204) console.log("Jira issue updated successfully");
     else {
@@ -34,16 +34,15 @@ async function updateJiraField(jiraId, message) {
 }
 
 async function getJiraTicketDetails(jiraId) {
-  const response = await fetch(
-    `https://${DOMAIN}/rest/api/3/issue/${jiraId}?fields=summary,status,assignee`,
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Basic ${AUTH}`,
-        Accept: "application/json",
-      },
-    }
-  );
+  const url = `https://${DOMAIN}/rest/api/3/issue/${jiraId}?fields=summary,status,assignee`;
+  console.log(url);
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Basic ${AUTH}`,
+      Accept: "application/json",
+    },
+  });
 
   if (!response.ok) {
     console.error(`Error---> ${response.statusText}`);
