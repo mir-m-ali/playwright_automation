@@ -22,6 +22,8 @@ async function runGitHubAction() {
 const EMAIL = `mir.ali1016@gmail.com`;
 const API_TOKEN = process.env.JIRA_API_TOKEN;
 
+console.log(`token: ${API_TOKEN}`);
+
 const AUTH = Buffer.from(`${EMAIL}:${API_TOKEN}`).toString("base64");
 const DOMAIN = `mirmali.atlassian.net`;
 
