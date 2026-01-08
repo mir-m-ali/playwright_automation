@@ -18,6 +18,8 @@ jobs:
           node-version: "24.x"
           cache: "npm"
 
-      # Run the script      
+      # Run the script
       - name: Run test-github-action.js
+        env:
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
         run: node test-github-action.js
