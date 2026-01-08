@@ -1,7 +1,5 @@
 const EMAIL = `mir.ali1016@gmail.com`;
-const API_TOKEN =
-  "ATATT3xFfGF0wKEPj0unAyVPAcGvr9tkc0ircHiEOKYDpaCDe11N8Cp2fWxL3gAbATS74xo5L3Wk4bRDnKenSBPvaa_msinVnBY1HGAe3FGiaRnwukVnBHsO8q2fGwxIeCS4U-PMgEHmJWYGO7Hvpw9bwr2DGH5M-lTF0CJeNTS3tM8hbOpjToM=48BA20F7";
-
+const API_TOKEN = process.env.JIRA_API_TOKEN;
 const AUTH = Buffer.from(`${EMAIL}:${API_TOKEN}`).toString("base64");
 const DOMAIN = `mirmali.atlassian.net`;
 
