@@ -20,11 +20,7 @@ async function runGitHubAction() {
 }
 
 const EMAIL = `mir.ali1016@gmail.com`;
-const API_TOKEN =
-  "ATATT3xFfGF0GaESkO-Yy7mEar2Mrz-DJWEdvQBLzraTl7kMqV7zyPzrKCK3NwX46jHQUd_pgC9qv27U2LcAhkwo-nKMKWni0GowQALbPz6LGCIV3nPSIs7t4lJcQepCOgqCsZ_-U1jS6k3xLjwVfIPs1G55dHQCncrotINDSE85WE8QLBGhqB8=F3EDEF91";
-//process.env.JIRA_API_TOKEN;
-
-console.log(`token: ${API_TOKEN}`);
+const API_TOKEN = process.env.JIRA_API_TOKEN;
 
 const AUTH = Buffer.from(`${EMAIL}:${API_TOKEN}`).toString("base64");
 const DOMAIN = `mirmali.atlassian.net`;

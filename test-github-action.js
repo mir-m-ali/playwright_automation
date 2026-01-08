@@ -1,6 +1,6 @@
 const EMAIL = `mir.ali1016@gmail.com`;
 const API_TOKEN =
-  "ATATT3xFfGF0GaESkO-Yy7mEar2Mrz-DJWEdvQBLzraTl7kMqV7zyPzrKCK3NwX46jHQUd_pgC9qv27U2LcAhkwo-nKMKWni0GowQALbPz6LGCIV3nPSIs7t4lJcQepCOgqCsZ_-U1jS6k3xLjwVfIPs1G55dHQCncrotINDSE85WE8QLBGhqB8=F3EDEF91";
+  "ATATT3xFfGF0wKEPj0unAyVPAcGvr9tkc0ircHiEOKYDpaCDe11N8Cp2fWxL3gAbATS74xo5L3Wk4bRDnKenSBPvaa_msinVnBY1HGAe3FGiaRnwukVnBHsO8q2fGwxIeCS4U-PMgEHmJWYGO7Hvpw9bwr2DGH5M-lTF0CJeNTS3tM8hbOpjToM=48BA20F7";
 
 const AUTH = Buffer.from(`${EMAIL}:${API_TOKEN}`).toString("base64");
 const DOMAIN = `mirmali.atlassian.net`;
@@ -45,31 +45,11 @@ async function getJiraTicketDetails(jiraId) {
   });
 
   if (!response.ok) {
-    console.error(`Error---> ${response.statusText}`);
+    console.error(`Error---> ${response.status} ${response.statusText}`);
   }
 
   const data = await response.json();
   console.log(data);
 }
 
-async function readGoogle() {
-  const response = await fetch(
-    "https://www.googleapis.com/books/v1/volumes?q=isbn:0747532699",
-    {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-      },
-    }
-  );
-  if (!response.ok) {
-    console.error(`Error---> ${response.statusText}`);
-  }
-
-  const data = await response.json();
-  console.log(data);
-}
-
-//getJiraTicketDetails("PAP-3");
-//runGitHubAction();
-readGoogle();
+getJiraTicketDetails("PAP-3");
