@@ -1,0 +1,12 @@
+name: Simple Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-google:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -s -o /dev/null -w "%{http_code}\n" https://www.google.com
+      - run: curl -s -o /dev/null -w "%{http_code}\n" https://www.atlassian.com
+      - run: curl -s -o /dev/null -w "%{http_code}\n" https://mirmali.atlassian.net
